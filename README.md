@@ -18,5 +18,9 @@ https://blog.openzeppelin.com/workshop-recap-cheap-contract-deployment-through-c
 
 https://solidity-by-example.org/new-contract/
 
-How to check the type of the contract in Solidity - ERC165 explained
+## How to check the type of the contract in Solidity - ERC165 explained
+
 https://kushgoyal.com/solidity-how-to-check-type-of-the-contract-erc-165/
+
+https://docs.openzeppelin.com/contracts/4.x/api/utils#ERC165
+
