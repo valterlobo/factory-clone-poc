@@ -4,8 +4,9 @@ pragma solidity ^0.8.9;
 // Uncomment this line to use console.log
 import "hardhat/console.sol";
 import "./icar.sol";
+import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 
-contract CarSUV is ICar {
+contract CarSUV is ICar, ERC165 {
     address public owner;
     string public model;
     address public carAddr;
@@ -32,5 +33,17 @@ contract CarSUV is ICar {
     function setInfo(address _owner, string memory _model) external override {
         owner = _owner;
         model = _model;
+    }
+
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        virtual
+        override
+        returns (bool)
+    {
+        return
+            interfaceId == type(ICar).interfaceId ||
+            super.supportsInterface(interfaceId);
     }
 }
