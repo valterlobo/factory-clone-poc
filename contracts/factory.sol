@@ -6,7 +6,6 @@ import "hardhat/console.sol";
 import "./icar.sol";
 import "@openzeppelin/contracts/proxy/Clones.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
-
 import {ERC165Checker} from "@openzeppelin/contracts/utils/introspection/ERC165Checker.sol";
 
 contract CarFactory {
@@ -18,7 +17,10 @@ contract CarFactory {
 
     function addType(string memory _type, address _contract) public {
         require(_contract.isContract(), "Car address must be a contract");
-        bool checkIsICar = ERC165Checker.supportsInterface(_contract, type(ICar).interfaceId);
+        bool checkIsICar = ERC165Checker.supportsInterface(
+            _contract,
+            type(ICar).interfaceId
+        );
         require(checkIsICar, "Car address must be the same type ICar");
 
         /*
